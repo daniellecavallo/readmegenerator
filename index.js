@@ -44,11 +44,38 @@ inquirer
         message: 'Are there any tests for this project?',
         name: 'test',
     },
-
+    {
+        type: 'input',
+        message: 'What is the creators email?',
+        name: 'Email',
+    },
   ])
   .then((response) => {
     const template=`
-  # ${response.title}
+  # ${response.title} 
+
+## Description
+    ${response.description}
+
+## Installation
+${response.installation}
+
+## Usage
+${response.usage}
+
+## Contribution
+${response.contribution}
+
+## Test
+${response.test}
+
+## License
+this project is governed under the ${response.license} license
+
+## Question
+this project was creted by ${response.credits}
+
+they can be reached at ${response.email}
     `
   fs.writeFile('readme.md', template, (err) =>
   err ? console.error(err) : console.log('Success!')
