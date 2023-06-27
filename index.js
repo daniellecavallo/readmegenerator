@@ -12,26 +12,45 @@ inquirer
     {
       type: 'input',
       message: 'What is the name of your project?',
-      name: 'Title',
+      name: 'title',
     },
     {
       type: 'input',
       message: 'How would you describe your project?',
-      name: 'Description',
+      name: 'description',
     },
     {
         type: 'input',
         message: 'How do you use your project?',
-        name: 'Usage',
-      },
+        name: 'usage',
+     },
+    {
+        type: 'input',
+        message: 'How do you install your project?',
+        name: 'installation',
+     },
+    {
+        type: 'input',
+        message: 'How do you contribute to this project?',
+        name: 'contributing',
+    },
+    {
+        type: 'input',
+        message: 'Who worked on this project?',
+        name: 'credits',
+    },
+    {
+        type: 'input',
+        message: 'Are there any tests for this project?',
+        name: 'test',
+    },
+
   ])
   .then((response) => {
     const template=`
-    <svg height="500" width="500">
-    ${shape.render()}
-    <text x="0" y="15" fill="${response.textcolor}">${response.text}</text>
-  </svg>`
-  fs.writeFile('logo.svg', template, (err) =>
+  # ${response.title}
+    `
+  fs.writeFile('readme.md', template, (err) =>
   err ? console.error(err) : console.log('Success!')
   );
 });
